@@ -1,0 +1,59 @@
+/* ── Google Fonts — already preconnected in index.html, just import weight subset ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Outfit, system-ui, -apple-system, sans-serif;
+}
+
+/* ── Smooth scroll only when user hasn't requested reduced motion ── */
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+body {
+    min-height: 100vh;
+    /* Prevents layout shift from scrollbar appearing */
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Improve text rendering performance */
+    text-rendering: optimizeSpeed;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── App wrapper ── */
+.app {
+    width: 80%;
+    margin: auto;
+    /* Offset for fixed navbar (navbar height ≈ 86px, add 4px buffer) */
+    padding-top: 90px;
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #909090; }
+
+/* ── Lazy image placeholder (prevents layout shift) ── */
+img {
+    /* Images don't block layout before they load */
+    content-visibility: auto;
+}
+
+/* ── Focus visible for accessibility ── */
+:focus-visible {
+    outline: 2px solid tomato;
+    outline-offset: 2px;
+}

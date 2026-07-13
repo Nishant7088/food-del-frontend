@@ -1,0 +1,260 @@
+.place-order {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 60px;
+    padding-bottom: 80px;
+}
+
+.place-order-left {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.place-order-left .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #262626;
+}
+
+/* Loading */
+.addr-loading-msg {
+    color: #999;
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+/* Selected address card */
+.selected-addr-card {
+    border: 1.5px solid tomato;
+    background: #fff9f8;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.selected-addr-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.addr-label-badge {
+    background: #fff0ed;
+    color: tomato;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.change-addr-btn {
+    background: none;
+    border: none;
+    color: tomato;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Outfit, sans-serif;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.change-addr-btn:hover { opacity: 0.75; }
+
+.selected-addr-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #262626;
+}
+
+.selected-addr-detail {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* No address prompt */
+.no-addr-prompt {
+    border: 1.5px dashed #e0e0e0;
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fafafa;
+}
+
+.no-addr-prompt:hover {
+    border-color: tomato;
+    background: #fff9f8;
+}
+
+.no-addr-icon { font-size: 28px; }
+
+.no-addr-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #262626;
+    margin-bottom: 3px;
+}
+
+.no-addr-sub { font-size: 13px; color: #999; }
+
+.add-addr-arrow {
+    margin-left: auto;
+    font-size: 22px;
+    color: tomato;
+}
+
+/* Manage saved addresses button */
+.manage-addr-btn {
+    background: transparent;
+    border: 1.5px solid #e0e0e0;
+    color: #555;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: Outfit, sans-serif;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.manage-addr-btn:hover {
+    border-color: tomato;
+    color: tomato;
+    background: #fff9f8;
+}
+
+/* Right panel */
+.place-order-right {
+    flex: 1;
+    max-width: 480px;
+}
+
+.place-order .cart-total {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1.5px solid #f0f0f0;
+    border-radius: 16px;
+    padding: 24px;
+    background: #fafafa;
+}
+
+.place-order .cart-total h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #262626;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    font-size: 15px;
+    padding: 3px 0;
+}
+
+.total-row { font-size: 16px; color: #262626; }
+.cart-discount { color: #2a8f2a; font-weight: 500; }
+
+.place-order .cart-total hr {
+    height: 1px;
+    background: #e8e8e8;
+    border: none;
+    margin: 3px 0;
+}
+
+/* Payment method */
+.payment-method-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #262626;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    transition: all 0.2s;
+    user-select: none;
+    font-family: Outfit, sans-serif;
+}
+
+.payment-option:hover { border-color: #f0a090; background: #fff8f7; }
+
+.payment-option.active {
+    border-color: tomato;
+    background: #fff0ed;
+    color: tomato;
+    font-weight: 600;
+}
+
+.payment-option input[type="radio"] { accent-color: tomato; }
+.payment-icon { font-size: 18px; }
+
+/* Place order button */
+.place-order-btn {
+    border: none;
+    color: white;
+    background-color: tomato;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background 0.3s;
+    font-family: Outfit, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.place-order-btn:hover:not(:disabled) { background-color: #e03e00; }
+
+.place-order-btn:disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+@media(max-width: 900px) {
+    .place-order {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .place-order-left,
+    .place-order-right {
+        max-width: 100%;
+        width: 100%;
+    }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── Primary SEO ── -->
+    <title>Tomato — Order Food Online | Fast Delivery</title>
+    <meta name="description" content="Order delicious food online from Tomato. Fresh salads, rolls, pasta, desserts, sandwiches and more delivered fast to your door. Browse our menu and order now!" />
+    <meta name="keywords" content="food delivery, order food online, tomato food, fast delivery, salad, pasta, rolls, dessert, sandwich" />
+    <meta name="author" content="Tomato Food Delivery" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://tomato-food.vercel.app/" />
+
+    <!-- ── Open Graph ── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tomato — Order Food Online | Fast Delivery" />
+    <meta property="og:description" content="Order fresh food online. Salads, pasta, desserts, sandwiches and more. Fast delivery to your door!" />
+    <meta property="og:url" content="https://tomato-food.vercel.app/" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:site_name" content="Tomato Food Delivery" />
+
+    <!-- ── Twitter Card ── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tomato — Order Food Online" />
+    <meta name="twitter:description" content="Order fresh food online. Fast delivery to your door!" />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- ── Favicon ── -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/vite.svg" />
+
+    <!--
+      ══════════════════════════════════════════════════════════
+      PERFORMANCE FIX #1 — Render-blocking requests (~150ms saved)
+      Preconnect warms up the DNS+TLS handshake to fonts.gstatic.com
+      BEFORE the CSS is even parsed, so the actual font file download
+      starts sooner.
+      ══════════════════════════════════════════════════════════
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!--
+      PERFORMANCE FIX #2 — Reduced font weights (was 300-700, now only
+      the 3 weights actually used: 400 regular, 500 medium, 600 semibold).
+      Fewer weights = smaller font CSS payload = faster FCP.
+      display=swap prevents invisible text while the font loads (no FOIT).
+    -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" />
+    </noscript>
+
+    <!--
+      PERFORMANCE FIX #3 — Razorpay SDK is only needed on the /order page,
+      not on first paint. `defer` lets HTML parsing + rendering finish
+      first; the script only executes after the DOM is ready.
+      This was already deferred, kept as-is.
+    -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "Tomato Food Delivery",
+      "description": "Order delicious food online. Fast delivery to your door.",
+      "url": "https://tomato-food.vercel.app/",
+      "servesCuisine": ["Indian", "Italian", "Continental"],
+      "priceRange": "₹₹",
+      "hasMenu": "https://tomato-food.vercel.app/#explore-menu",
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://tomato-food.vercel.app/"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

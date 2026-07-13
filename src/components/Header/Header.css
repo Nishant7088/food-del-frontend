@@ -1,0 +1,119 @@
+.header {
+    /*
+      RESPONSIVE FIX — `height: 34vw` alone breaks on narrow phones.
+      On a 360px-wide screen that's only ~122px tall, but the heading
+      text wraps to 2-3 lines and overflows that height, getting clipped.
+      Fix: use min-height instead of a fixed height, so the box grows
+      to fit whatever content it needs, with vw just setting a sensible
+      floor on larger screens.
+    */
+    min-height: 34vw;
+    margin: 30px auto;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+}
+
+.header-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/*
+  RESPONSIVE FIX — dark gradient overlay on the left side so white text
+  stays readable regardless of what part of the photo sits behind it,
+  especially important on mobile where the text box covers much more
+  of the image's width.
+*/
+.header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.25) 45%,
+        rgba(0,0,0,0) 75%
+    );
+    z-index: 0;
+    pointer-events: none;
+}
+
+.header-contents {
+    position: relative; /* was absolute+bottom:10% — caused overflow on short boxes */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.2vw;
+    padding: 24px 6vw;
+    max-width: 50%;
+    animation: fadeIn 1s ease;
+}
+
+.header-contents h2 {
+    font-weight: 600;
+    color: white;
+    font-size: clamp(20px, 4.5vw, 42px);
+    line-height: 1.25;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+.header-contents p {
+    color: white;
+    font-size: clamp(12px, 1vw, 16px);
+    line-height: 1.5;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+.header-contents button {
+    border: none;
+    color: #747474;
+    font-weight: 600;
+    padding: clamp(8px, 1vw, 14px) clamp(20px, 2.3vw, 32px);
+    background-color: white;
+    font-size: clamp(13px, 1vw, 16px);
+    border-radius: 50px;
+    transition: background-color 0.25s, color 0.25s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.header-contents button:hover {
+    background-color: #747474;
+    color: white;
+}
+
+/* ── Responsive breakpoints ── */
+@media (max-width: 1050px) {
+    .header-contents { max-width: 55%; }
+}
+
+@media (max-width: 750px) {
+    .header { min-height: 240px; }
+    .header-contents {
+        max-width: 75%;
+        padding: 20px 24px;
+        gap: 10px;
+    }
+    .header-contents p { display: none; }
+}
+
+@media (max-width: 480px) {
+    .header { min-height: 200px; }
+    .header-contents {
+        max-width: 85%;
+        padding: 16px 20px;
+    }
+    .header-contents h2 {
+        font-size: clamp(18px, 6vw, 24px);
+    }
+}

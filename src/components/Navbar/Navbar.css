@@ -1,0 +1,260 @@
+/* ── Fixed navbar ── */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 18px rgba(0,0,0,0.07);
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: box-shadow 0.3s;
+    will-change: transform; /* GPU layer — smoother scrolling */
+}
+
+.navbar .logo { width: 62px; height: 62px; flex-shrink: 0; }
+
+/* Desktop links */
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    color: #49557e;
+    font-size: 16px;
+    align-items: center;
+}
+
+.navbar-menu li {
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.navbar-menu li::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: tomato;
+    transition: width 0.22s;
+}
+
+.navbar-menu li:hover          { color: tomato; }
+.navbar-menu li:hover::after   { width: 100%; }
+.nav-myorders                  { color: tomato !important; font-weight: 600; }
+
+/* Right side */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-shrink: 0;
+}
+
+.navbar-right > img { cursor: pointer; width: 22px; height: 22px; }
+
+.navbar button {
+    background: transparent;
+    font-size: 15px;
+    color: #49557e;
+    /* border: 1.5px solid tomato; */
+    padding: 8px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.25s;
+    font-family: Outfit, sans-serif;
+}
+
+.navbar button:hover { background: #fff4f2; }
+
+/* Cart dot */
+.navbar-search-icon { position: relative; }
+
+.navbar-search-icon .dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: tomato;
+    border-radius: 50%;
+    top: -6px; right: -6px;
+}
+
+/* ── Avatar ── */
+.avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 16px;
+    cursor: pointer; user-select: none; flex-shrink: 0;
+    transition: box-shadow 0.2s;
+}
+
+.avatar:hover { box-shadow: 0 0 0 3px rgba(255,99,71,0.25); }
+
+.avatar-lg {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 17px; flex-shrink: 0;
+}
+
+/* ── Profile dropdown ── */
+.navbar-profile { position: relative; }
+
+.nav-profile-dropdown {
+    position: absolute;
+    right: 0;
+    /* Small invisible gap — covered by the ::before bridge so
+       the cursor never "leaves" the hover zone while travelling
+       from avatar down to the dropdown */
+    top: calc(100% + 8px);
+    z-index: 600;
+    background: white;
+    border: 1px solid #ebebeb;
+    border-radius: 14px;
+    padding: 0;
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Smooth fade + slight drop */
+    transform: translateY(-6px);
+    transition:
+        opacity   0.22s ease,
+        transform 0.22s ease,
+        visibility 0s linear 0.22s; /* delay visibility so fade-out finishes */
+    flex-direction: column;
+    min-width: 195px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+    overflow: hidden;
+    list-style: none;
+    display: flex; /* always flex so transition works */
+}
+
+/* Invisible bridge: fills the 8px gap between avatar and dropdown
+   so the cursor doesn't "leave" .navbar-profile while moving down */
+.nav-profile-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 0; right: 0;
+    height: 10px;
+    background: transparent;
+}
+
+/* Visible state — toggled via JS class */
+.nav-profile-dropdown.dropdown-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+        opacity   0.2s ease,
+        transform 0.2s ease,
+        visibility 0s linear 0s;
+}
+
+.dropdown-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px;
+    background: #fff8f7;
+}
+
+.dropdown-header span {
+    font-weight: 700; color: #262626; font-size: 14px;
+}
+
+.nav-profile-dropdown hr {
+    border: none; height: 1px; background: #f2f2f2; margin: 0;
+}
+
+.nav-profile-dropdown li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 16px;
+    cursor: pointer; color: #444; font-size: 14px;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.nav-profile-dropdown li:hover { background: #fff4f2; color: tomato; }
+.nav-profile-dropdown li img  { width: 17px; opacity: 0.7; }
+
+/* ── Hamburger ── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+    background: none;
+    border: none;
+    z-index: 700;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px; height: 2.5px;
+    background: #49557e;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* ── Mobile drawer ── */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 70%;
+    max-width: 280px;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 24px rgba(0,0,0,0.13);
+    z-index: 999;
+    transition: right 0.3s ease;
+    padding-top: 90px;
+}
+
+.mobile-menu.open { right: 0; }
+
+.mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu ul li {
+    padding: 16px 28px;
+    font-size: 16px;
+    color: #49557e;
+    cursor: pointer;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.18s, color 0.18s;
+}
+
+.mobile-menu ul li:hover { background: #fff4f2; color: tomato; }
+.mobile-logout { color: tomato !important; font-weight: 600; }
+
+/* ── Responsive ── */
+@media(max-width: 1050px) {
+    .navbar { padding: 10px 5%; }
+    .navbar-menu { gap: 18px; font-size: 15px; }
+    .navbar-right { gap: 16px; }
+}
+
+@media(max-width: 900px) {
+    .navbar-menu { gap: 13px; font-size: 14px; }
+    .navbar-right { gap: 14px; }
+    .navbar button { padding: 7px 18px; font-size: 14px; }
+}
+
+@media(max-width: 750px) {
+    .navbar-menu          { display: none; }
+    .hamburger            { display: flex; }
+    .mobile-menu          { display: block; }
+    .navbar-right button  { display: none; }
+    .navbar               { padding: 10px 5%; }
+}
