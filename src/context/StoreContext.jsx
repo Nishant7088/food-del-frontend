@@ -5,7 +5,7 @@ export const StoreContext = createContext(null);
 
 // ── Axios instance with base URL and timeout ──
 const api = axios.create({
-    baseURL: "https://food-del-backend-zp5h.onrender.com",
+    baseURL: "https://food-del-backend-zp5h.onrender.com", 
     timeout: 10000,
 });
 
