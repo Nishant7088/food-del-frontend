@@ -24,7 +24,7 @@ const StoreContextProvider = (props) => {
     const [promoData, setPromoData]       = useState(null);
     const [restaurantOpen, setRestaurantOpen] = useState(true);
 
-    const url         = "https://food-del-backend-zp5h.onrender.com";
+    const url = "https://food-del-backend-zp5h.onrender.com";
     const DELIVERY_FEE = 49;
 
     // ── Cart helpers ──
